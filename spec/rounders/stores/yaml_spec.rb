@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe Rounders::Stores::YAML do
+  include_context 'uses temp dir'
   let(:described_class) { Rounders::Stores::YAML }
   let(:described_instance) { described_class.new(*args) }
   let(:args) { [] }
 
   before do
     Rounders::Stores::YAML.configure do |c|
-      c.file = 'tmp/store.yaml'
+      c.file = "#{temp_dir}/store.yaml"
     end
   end
   describe '#initialize' do
